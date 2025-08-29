@@ -74,7 +74,7 @@ def load(df, db_path="eia_data.db"):
     conn.close()
     print(f"Data loaded to {db_path}")
 
-# Step 4: Visualize - Plot average price over time (portfolio bonus)
+
 def visualize(df):
     if df.empty:
         print("No data to visualize")
@@ -86,7 +86,7 @@ def visualize(df):
     plt.xlabel("Date")
     plt.ylabel("Price (cents/kWh)")
     plt.grid(True)
-    plt.savefig("price_trend.png")  # Save for portfolio
+    plt.savefig("price_trend.png")
     plt.show()
     print("Saved plot to price_trend.png")
 
@@ -101,8 +101,7 @@ def run_etl(api_key):
 # Run the script
 if __name__ == "__main__":
     API_KEY = "C818Lw6Kjhe39QmHPrgyRQU0Uc8lGTgvUlBRO0Oq"  # Replace with your EIA API key
-    if API_KEY == "C818Lw6Kjhe39QmHPrgyRQU0Uc8lGTgvUlBRO0Oq":
+    if not API_KEY:
         print("Error: Please set a valid EIA API key")
     else:
-        df = run_etl(API_KEY)
-        print(df.head())
+        run_etl(API_KEY)
